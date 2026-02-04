@@ -51,16 +51,27 @@
 </head>
 <body>
 
+  <!-- Puppy sound -->
+  <audio id="puppySound" loop>
+    <source src="puppy.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="container">
-    <img src="profile.jpg" alt="My Photo">
+    <img src="profile.png" alt="My Photo">
     <h1>Tashi, Will you be my Valentine? 💕</h1>
 
-    <button id="yes" onclick="alert('Okiee! 💖')">Yes</button>
+    <button id="yes">Yes</button>
     <button id="no">No</button>
   </div>
 
   <script>
     const noButton = document.getElementById("no");
+    const puppySound = document.getElementById("puppySound");
+
+    // Play sound on first user interaction
+    document.body.addEventListener("click", () => {
+      puppySound.play();
+    }, { once: true });
 
     noButton.addEventListener("mouseover", () => {
       const x = Math.random() * 300 - 150;
@@ -68,8 +79,11 @@
 
       noButton.style.transform = `translate(${x}px, ${y}px)`;
     });
+
+    document.getElementById("yes").onclick = () => {
+      alert("Okiee! 🐶💖");
+    };
   </script>
 
 </body>
 </html>
-
